@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>JavaScript Events</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link href="styles.css" rel="stylesheet" type="text/css">
+             
+    </head>
+    <body>
+        <h1>JavaScript Events</h1>
+        <h2>On-Click</h2>
+        <script>
+            function over() {
+               document.write ("Mouse Over");
+            }            
+            function out() {
+               document.write ("Mouse Out");
+            }  
+        </script>
+        <button onclick="document.getElementById('click').innerHTML=Date()">Click</button>
+        <p id="click"></p>
+        
+        <h2>onMouseOver and onMouseOut</h2>
+         <p>Bring your mouse inside the division to see the result:</p>      
+        <div onmouseover = "over()" onmouseout = "out()">
+         <h3> This is inside the division </h3>
+         
+        </div>
+    </body>
+</html>
