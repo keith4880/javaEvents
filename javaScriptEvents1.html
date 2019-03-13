@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>JavaScript Events</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles1.css" rel="stylesheet" type="text/css">
+
+        <script>
+            // General Window Event Listener
+            window.addEventListener("resize", function () {
+                document.getElementById("demo1").innerHTML = Math.random();
+            });
+            // General Window Event Listener
+            window.addEventListener("click", function () {
+                console.log("Did it work?");
+                document.getElementById("demo2").innerHTML = "Clicked";
+            });
+            // General Window Event Listener
+            window.addEventListener("dblclick", function () {
+                document.getElementById("demo2").innerHTML = "Double Clicked";
+            });
+            // Mouse Event Listener
+            /* http://stackoverflow.com/questions/7790725/javascript-track-mouse-position */
+            (function () {
+                document.onmousemove = handleMouseMove;
+                function handleMouseMove(event) {
+                    var dot, eventDoc, doc, body, pageX, pageY;
+                    event = event || window.event; // IE-ism
+                    // If pageX/Y aren't available and clientX/Y are,
+                    // calculate pageX/Y - logic taken from jQuery.
+                    // (This is to support old IE)
+                    if (event.pageX == null && event.clientX != null) {
+                        eventDoc = (event.target && event.target.ownerDocument) || document;
+                        doc = eventDoc.documentElement;
+                        body = eventDoc.body;
+                        event.pageX = event.clientX +
+                                (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+                                (doc && doc.clientLeft || body && body.clientLeft || 0);
+                        event.pageY = event.clientY +
+                                (doc && doc.scrollTop || body && body.scrollTop || 0) -
+                                (doc && doc.clientTop || body && body.clientTop || 0);
+                    }
+                    // Use event.pageX / event.pageY here
+                    document.getElementById("demo3").innerHTML = "Pos: " + event.pageX + "," + event.pageY;
+                }
+            })();
+            // onclick event to change text
+            function changeText() {
+                var innerText = document.getElementById("ChangeText").innerHTML;
+                console.log(innerText);
+                switch (innerText)
+                {
+                    case "Click me to Change the Text":
+                        innerText = "Click Again";
+                        break;
+                    case "Click Again":
+                        innerText = "Third time is the charm!, click again";
+                        break;
+                    default:
+                        innerText = "Click me to Change the Text";
+                        break;
+                }
+
+                document.getElementById("ChangeText").innerHTML = innerText;
+            }
+        </script>
+
+    </head>
+    <body id="bodyClick">
+        <div class="container body-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>JavaScript Events</h1>
+                    <a href="javaScriptEvents1.html">Home</a><br/><br/>
+                </div>
+                <div class="row">
+                    <div class="col-md-12"><hr /></div>
+                </div>
+                <div class="col-md-12">
+                    <p id="ChangeText" class="redBackgroundWhiteText" onclick="changeText()">Click Change the Text</p>
+                </div>
+                <div class="col-md-12">
+                    <p id="demo1"></p>
+                    <p id="demo2"></p>
+                    <h2>Cursor Position</h2>
+                    <p id="demo3"></p>
+                </div>
+            </div>
+        </div>
+        <p>Hover the mouse over the button</p>
+<button onmouseover="this.innerHTML=Date()">The time is?</button><br>
+
+<p>Press the boutton and press a key for the date to display</p>
+<button onkeypress="this.innerHTML=Date()">The time is?</button>
+
+<button onload="this.innerHTML=Date()">The time is?</button>
+<button onload="document.getElementById('demo4').innerHTML= date()">Self load</button>
+<p id ="demo4"></p>
+
+        
+    </body>
+</html>
+
