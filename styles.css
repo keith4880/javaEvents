@@ -1,0 +1,23 @@
+body {
+    background-color: cadetblue;
+}
+div {
+    width: 100px;
+    height: 100px;
+    background: blueviolet;
+    transition: width 3s;
+}
+
+div:hover {
+    width: 300px;
+}
+h1 {
+    color: green;
+}
+h2 {
+    color: black;
+}
+p {
+    color: purple;
+}
+
